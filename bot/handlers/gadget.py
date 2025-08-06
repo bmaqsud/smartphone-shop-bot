@@ -82,14 +82,56 @@ def send_apple_telefon(update: Update, context: CallbackContext) -> None:
     language = user_data['language']
     
     if language == "O'zbekcha":
-        for phone in smartphone_db.get_iphone_x():
+            for phone in smartphone_db.get_iphone_x():
+                context.bot.send_photo(
+                    chat_id=update.effective_chat.id,
+                    photo=phone['image_url'],
+                    caption=f"""📱 <b><u>iPhone X</u></b>
+                    💵 price: {phone['price']}
+                    🎨 color: {phone['color']}
+                    🔋 Batareya holati: {phone['yomkus']}
+                    💾 Xotira: {phone['xotira']}
+ 
+                """,
+                   parse_mode="HTML"
+                )
+    else:
+         for phone in smartphone_db.get_iphone_x():
             context.bot.send_photo(
                 chat_id=update.effective_chat.id,
                 photo=phone['image_url'],
-                caption=f"iPhone X\\price: {phone['price']}\ncolor: {phone['color']}",
+                caption=f"""📱  <b><u>iPhone X</u></b>
+                💵 Цена: {phone['price']}
+                🎨 Цвет: {phone['color']}
+                🔋 Состояние батареи: {phone['yomkus']}
+                💾 Память: {phone['xotira']}
+                """,
+                parse_mode="HTML"
             )
+
+    if language == "O'zbekcha":
+            for phone in smartphone_db.get_iphone_11():
+                context.bot.send_photo(
+                    chat_id=update.effective_chat.id,
+                    photo=phone['image_url'],
+                    caption=f"""📱 <b><u>iPhone 11</u></b>
+                    💵 price: {phone['price']}
+                    🎨 color: {phone['color']}
+                    🔋 Batareya holati: {phone['yomkus']}
+                    💾 Xotira: {phone['xotira']}
+ 
+                """,
+                )
     else:
-        context.bot.send_message(
-            chat_id=update.effective_chat.id,
-            text="Telefonlar",
-        )
+          for phone in smartphone_db.get_iphone_x():
+            context.bot.send_photo(
+                chat_id=update.effective_chat.id,
+                photo=phone['image_url'],
+                caption=f"""📱  <b><u>iPhone 11</u></b>
+                💵 Цена: {phone['price']}
+                🎨 Цвет: {phone['color']}
+                🔋 Состояние батареи: {phone['yomkus']}
+                💾 Память: {phone['xotira']}
+                """,
+                parse_mode="HTML"
+            )

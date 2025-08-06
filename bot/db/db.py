@@ -38,3 +38,21 @@ class SmartPhoneDB:
 
     def get_iphone_x(self):
         return self.phones['apple']['iPhoneX']
+
+    def get_iphone_11(self):
+        return self.phones['apple']['iPhone11']
+    
+    def get_iphone_12(self):
+        return self.phones['apple']['iPhone12']
+    
+    def get_iphone_13(self):
+        return self.phones['apple']['iPhone13']
+    
+    def get_iphone_14(self):
+        return self.phones['apple']['iPhone14']
+    
+    def get_iphone_15(self):
+        return self.phones['apple']['iPhone15']
+    
+    def get_iphone_16(self):
+        return self.phones['apple']['iPhone16']

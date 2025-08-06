@@ -78,16 +78,28 @@ def set_city(update: Update, context: CallbackContext) -> None:
     user_data['city'] = city
     user_db.set_user(user_id, user_data)
 
-    context.bot.send_message(
-        chat_id=update.effective_chat.id,
-        text=f"Ro'yxatdan o'tish muvaffaqiyatli yakunlandi!\n"
-             f"Sizning ma'lumotlaringiz:\n"
-             f"Til: {user_data['language']}\n"
-             f"Ism: {user_data['name']}\n"
-             f"Telefon: {user_data['phone']}\n"
-             f"Shahar: {user_data['city']}"
-    )
+    if user_data['language'] == "O'zbekcha":
+        context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text=f"Ro'yxatdan o'tish muvaffaqiyatli yakunlandi!\n"
+                f"Sizning ma'lumotlaringiz:\n"
+                f"Til: {user_data['language']}\n"
+                f"Ism: {user_data['name']}\n"
+                f"Telefon: {user_data['phone']}\n"
+                f"Shahar: {user_data['city']}"
+        )
 
-    main_menu(update, context)
+        main_menu(update, context)
 
-    return ConversationHandler.END
+        return ConversationHandler.END
+
+    else:
+        context.bot.send_message(
+            chat_id=update.effective_chat.id,
+            text="Регистрация успешно завершена!\n"
+            "Ваши данные:\n"
+            f"Язык: {user_data['language']}\n"
+            f"Имя: {user_data['name']}\n"
+            f"Телефон: {user_data['phone']}\n"
+            f"Город: {user_data['city']}"
+        )
